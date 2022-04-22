@@ -7,7 +7,7 @@ let alumnos = parseInt(prompt ("Ingrese la cantidad de alumnos."));
 
 
 for (i = 1 ; i <= alumnos ; i++) {
-    nota = parseInt(prompt("Ingrese la nota del alumno"));
+    nota = parseInt(prompt("Ingrese la nota final del alumno"));
     notaAcum = notaAcum + nota
 }
 
@@ -52,7 +52,7 @@ class Alumno {
             return "El alumno " + nombre + " " + apellido + " va a final";
         }
         else if 
-        ((notaP1 > 4 && notaP2 < 4) || (notaP1 < 4 && notaP2 > 4)){
+        ((notaP1 >= 4 && notaP2 < 4) || (notaP1 < 4 && notaP2 >= 4)){
             return "El alumno " + nombre + " " + apellido + " va a recuperatorio";
         } else if
         (notaP1 < 4 && notaP2 < 4) {
@@ -61,17 +61,38 @@ class Alumno {
     }
 }
 
+let cursoAlumnos = []
+
+for (i=0; i<alumnos; i++) {
 let nombre = prompt("Ingrese el nombre del alumno");
 let apellido = prompt("Ingrese el apellido del alumno");
 let notaP1 = parseInt(prompt("Ingrese la nota del primer parcial"));
 let notaP2 = parseInt(prompt("Ingrese la nota del segundo parcial"));
 
 let alumno1 = new Alumno(nombre, apellido, notaP1, notaP2);
+cursoAlumnos.push(alumno1);
+}
+
+//console.log(alumno1.nombre);
+//console.log(alumno1.promedio(notaP1, notaP2));
+//console.log(alumno1.nombreYApellido(nombre, apellido));
+//console.log(alumno1.aprobacionAlumno(nombre, apellido, notaP1, notaP2));
+
+console.log(cursoAlumnos);
+//console.log(cursoAlumnos[0]);
 
 
-console.log(alumno1);
-console.log(alumno1.nombre);
-console.log(alumno1.promedio(notaP1, notaP2));
-console.log(alumno1.nombreYApellido(nombre, apellido));
-console.log(alumno1.aprobacionAlumno(nombre, apellido, notaP1, notaP2));
+for (i = 0; i < cursoAlumnos.length; i++) {
+    console.log(cursoAlumnos[i]);
+}
 
+/* ES LO MISMO
+for (const alumno of cursoAlumnos) {
+    console.log(alumno.promedio); // Ejecuta el promedio de cada alumno
+} */
+
+const buscarAlumno = cursoAlumnos.find((alumno) => alumno.nombre === "Francisco" && alumno.apellido === "Ara"); // Método de búsqueda: busca un alumno por nombre y apellido.
+console.log(buscar);
+
+const promocionados = cursoAlumnos.filter ((alumno) => alumno.notaP1 >= 7 && alumno.notaP2 >=7); // Método de filtrado: crea un nuevo array con los alumnos promocionados
+console.log(promocionados);
