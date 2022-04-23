@@ -71,6 +71,16 @@ let notaP2 = parseInt(prompt("Ingrese la nota del segundo parcial"));
 
 let alumno1 = new Alumno(nombre, apellido, notaP1, notaP2);
 cursoAlumnos.push(alumno1);
+
+let contenedor = document.createElement("div");
+    contenedor.innerHTML = `<h3> Nombre: ${alumno1.nombre} ${alumno1.apellido} </h3>
+                            <ul> 
+                                <li> Nota primer parcial: ${alumno1.notaP1} </li>
+                                <li> Nota segundo parcial: ${alumno1.notaP2} </li>
+                                <li> ${alumno1.aprobacionAlumno(nombre, apellido, notaP1, notaP2)} </li>
+                            </ul>`;
+    document.body.appendChild(contenedor);
+
 }
 
 //console.log(alumno1.nombre);
@@ -92,7 +102,8 @@ for (const alumno of cursoAlumnos) {
 } */
 
 const buscarAlumno = cursoAlumnos.find((alumno) => alumno.nombre === "Francisco" && alumno.apellido === "Ara"); // Método de búsqueda: busca un alumno por nombre y apellido.
-console.log(buscar);
+console.log(buscarAlumno);
 
 const promocionados = cursoAlumnos.filter ((alumno) => alumno.notaP1 >= 7 && alumno.notaP2 >=7); // Método de filtrado: crea un nuevo array con los alumnos promocionados
 console.log(promocionados);
+
