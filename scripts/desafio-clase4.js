@@ -1,5 +1,3 @@
-//El simulador está calculando el promedio de notas de los alumnos de una clase. 
-
 let prom;
 let nota;
 let notaAcum = 0;
@@ -8,7 +6,7 @@ let alumnos = parseInt(prompt ("Ingrese la cantidad de alumnos."));
 function notasFinales(){
     for (i = 1 ; i <= alumnos ; i++) {
         nota = parseInt(prompt("Ingrese la nota final del alumno"));
-        notaAcum = notaAcum + nota
+        notaAcum += nota
     }
 }
 
@@ -88,7 +86,7 @@ function ingresarDatosAlumnos(){
     
     let alumno1 = new Alumno(nombre, apellido, notaP1, notaP2);
     cursoAlumnos.push(alumno1);
-    
+
     let contenedor = document.createElement("div");
         contenedor.innerHTML = `<h4 class="reset"> Alumno: ${alumno1.nombre} ${alumno1.apellido} </h4>
                                 <ul class="reset"> 
@@ -96,12 +94,23 @@ function ingresarDatosAlumnos(){
                                     <li> Nota segundo parcial: ${alumno1.notaP2} </li>
                                     <li> ${alumno1.aprobacionAlumno(nombre, apellido, notaP1, notaP2)} </li>
                                 </ul>`;
-        document.body.appendChild(contenedor);
-    
+        document.body.appendChild(contenedor);   
     }
 }
-
 ingresarDatosAlumnos();
+
+localStorage.clear();
+        const guardarLocal = (key, value) => { localStorage.setItem(key, value)};
+        guardarLocal("Alumnos", JSON.stringify(cursoAlumnos));
+
+        /*
+        for (const alumno of cursoAlumnos) {
+            guardarLocal("Alumno:", JSON.stringify(alumno));
+            //console.log(alumno)
+        }
+        */
+
+
 
 //console.log(alumno1.nombre);
 //console.log(alumno1.promedio(notaP1, notaP2));
@@ -126,17 +135,3 @@ console.log(buscarAlumno);
 
 const promocionados = cursoAlumnos.filter ((alumno) => alumno.notaP1 >= 7 && alumno.notaP2 >=7); // Método de filtrado: crea un nuevo array con los alumnos promocionados
 console.log(promocionados);
-
-
-function add() {
-    alumnos = Number(prompt("Ingrese la cantidad de alumnos que quiere agregar."));
-    ingresarDatosAlumnos();
-}
-
-// Problema: esto aparece automáticamente en vez de onclick. 
-let buttonAdd = document.getElementById("btn-add")
-buttonAdd.addEventListener("click", add)
-
-
-
-
