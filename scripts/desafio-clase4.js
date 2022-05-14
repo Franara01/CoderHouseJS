@@ -17,6 +17,7 @@ function promedio () {
     let contenedor = document.createElement("div");
     contenedor.innerHTML = "El promedio de nota de los alumnos de la clase es: " + prom
     document.body.appendChild(contenedor);
+    
 }
 
 promedio ();
@@ -135,3 +136,15 @@ console.log(buscarAlumno);
 
 const promocionados = cursoAlumnos.filter ((alumno) => alumno.notaP1 >= 7 && alumno.notaP2 >=7); // Método de filtrado: crea un nuevo array con los alumnos promocionados
 console.log(promocionados);
+
+Toastify({
+    text: "Un nuevo input ha sido ingresado y creado con éxito!",
+    duration: 5000,
+    gravity: 'top',
+    position: 'right',
+    stopOnFocus: true,
+    close: true,
+    style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+}).showToast();
