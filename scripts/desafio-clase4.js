@@ -148,3 +148,27 @@ Toastify({
         background: "linear-gradient(to right, #00b09b, #96c93d)",
       },
 }).showToast();
+
+let contenedor = document.createElement("div");
+contenedor.innerHTML = `<h4 class="reset"> Los alumnos anteriores que tomaron este curso fueron: </h4>`
+document.body.appendChild(contenedor);  
+
+
+fetch("https://swapi.dev/api/people/")
+    .then ((response) => {  
+        return response.json();
+    }).then ((alumnos) => {
+        
+        alumnos.results.forEach ( (alumno) => {
+            let lista = document.createElement("ul");
+            lista.innerHTML = 
+                                `
+                                <li> ${alumno.name} </li>`;
+            
+                               
+            document.body.appendChild(lista);  
+            
+        })
+    })
+    
+    // console.log(alumno.name);
