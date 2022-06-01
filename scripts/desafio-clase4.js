@@ -49,14 +49,6 @@ class Alumno {
         this.notaP2 = notaP2;
     }
 
-    promedio(notaP1, notaP2) {
-        return "El promedio del alumno es: " + (notaP1 + notaP2) / 2;
-    }
-
-    nombreYApellido (nombre, apellido) {
-        return "El alumno se llama " + nombre + " " + apellido;
-    }
-
     aprobacionAlumno (nombre, apellido, notaP1, notaP2) {
         if ( ((notaP1 + notaP2) / 2 >= 7)  && (notaP1 && notaP2 >= 4) ) {
             return "El alumno " + nombre + " " + apellido + " está promocionado";
@@ -99,10 +91,33 @@ function ingresarDatosAlumnos(){
     }
 }
 ingresarDatosAlumnos();
-
+/*
 localStorage.clear();
         const guardarLocal = (key, value) => { localStorage.setItem(key, value)};
-        guardarLocal("Alumnos", JSON.stringify(cursoAlumnos));
+        guardarLocal("Alumnos", JSON.stringify(cursoAlumnos.nombre));
+*/
+
+let contenedor2 = document.createElement('div');
+    contenedor2.innerHTML = `<h4>Los alumnos anotados en este curso que rindieron ambos parciales son: </h4>`
+    document.body.appendChild(contenedor2);
+
+localStorage.clear();
+localStorage.setItem('Alumno', JSON.stringify(cursoAlumnos));
+
+for (let i in cursoAlumnos) {
+    console.log(cursoAlumnos[i].nombre);
+}
+let alumno;
+alumno = JSON.parse(localStorage.getItem('alumno'));
+
+for (let i in cursoAlumnos) {
+
+    let contenedor = document.createElement('div');
+    contenedor.innerHTML =  ` <ul>
+                                <li> ${cursoAlumnos[i].nombre} ${cursoAlumnos[i].apellido}
+                            </ul>       `
+    document.body.appendChild(contenedor);
+}
 
         /*
         for (const alumno of cursoAlumnos) {
@@ -161,14 +176,8 @@ fetch("https://swapi.dev/api/people/")
         
         alumnos.results.forEach ( (alumno) => {
             let lista = document.createElement("ul");
-            lista.innerHTML = 
-                                `
-                                <li> ${alumno.name} </li>`;
-            
-                               
+            lista.innerHTML = `<li> ${alumno.name} </li>`;                   
             document.body.appendChild(lista);  
-            
         })
     })
     
-    // console.log(alumno.name);
