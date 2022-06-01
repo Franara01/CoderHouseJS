@@ -117,7 +117,7 @@ for (let i in cursoAlumnos) {
                                 <li> ${cursoAlumnos[i].nombre} ${cursoAlumnos[i].apellido}
                             </ul>       `
     document.body.appendChild(contenedor);
-}
+} 
 
         /*
         for (const alumno of cursoAlumnos) {
